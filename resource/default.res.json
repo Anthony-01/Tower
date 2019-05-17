@@ -1,0 +1,264 @@
+{
+	"groups": [
+		{
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,thumb_pb_png,track_pb_png,track_sb_png",
+			"name": "preload"
+		},
+		{
+			"keys": "bullet1_png,button_down_png,button_up_png,panelbackground_jpg,scene1bg_jpg,scene1sprite_json,scene1turret_json,scene2bg_jpg,scene2sprite_json,scene2turret_json,sprite1_down_json,sprite1_down_png,sprite1_left_json,sprite1_left_png,sprite1_right_json,sprite1_right_png,sprite1_up_json,sprite1_up_png,spritehp_png,spritehpbg_png,turretskin0_json,turretskin0_png,turretskin1_json,turretskin1_png,turretskin2_json,turretskin2_png,turretskin3_json,turretskin3_png,turretskin_json",
+			"name": "game"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/CheckBox/checkbox_select_disabled.png",
+			"type": "image",
+			"name": "checkbox_select_disabled_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_down.png",
+			"type": "image",
+			"name": "checkbox_select_down_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_up.png",
+			"type": "image",
+			"name": "checkbox_select_up_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_unselect.png",
+			"type": "image",
+			"name": "checkbox_unselect_png"
+		},
+		{
+			"url": "assets/ItemRenderer/selected.png",
+			"type": "image",
+			"name": "selected_png"
+		},
+		{
+			"url": "assets/Panel/border.png",
+			"type": "image",
+			"name": "border_png"
+		},
+		{
+			"url": "assets/Panel/header.png",
+			"type": "image",
+			"name": "header_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_disabled.png",
+			"type": "image",
+			"name": "radiobutton_select_disabled_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_down.png",
+			"type": "image",
+			"name": "radiobutton_select_down_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_up.png",
+			"type": "image",
+			"name": "radiobutton_select_up_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_unselect.png",
+			"type": "image",
+			"name": "radiobutton_unselect_png"
+		},
+		{
+			"url": "assets/ScrollBar/roundthumb.png",
+			"type": "image",
+			"name": "roundthumb_png"
+		},
+		{
+			"url": "assets/Slider/thumb.png",
+			"type": "image",
+			"name": "thumb_png"
+		},
+		{
+			"url": "assets/Slider/track.png",
+			"type": "image",
+			"name": "track_png"
+		},
+		{
+			"url": "assets/Slider/tracklight.png",
+			"type": "image",
+			"name": "tracklight_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/handle.png",
+			"type": "image",
+			"name": "handle_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/off.png",
+			"type": "image",
+			"name": "off_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/on.png",
+			"type": "image",
+			"name": "on_png"
+		},
+		{
+			"url": "assets/ProgressBar/thumb_pb.png",
+			"type": "image",
+			"name": "thumb_pb_png"
+		},
+		{
+			"url": "assets/ProgressBar/track_pb.png",
+			"type": "image",
+			"name": "track_pb_png"
+		},
+		{
+			"url": "assets/ScrollBar/track_sb.png",
+			"type": "image",
+			"name": "track_sb_png"
+		},
+		{
+			"url": "game/bullet1.png",
+			"type": "image",
+			"name": "bullet1_png"
+		},
+		{
+			"url": "game/panelbackground.jpg",
+			"type": "image",
+			"name": "panelbackground_jpg"
+		},
+		{
+			"url": "game/sprite1_down.png",
+			"type": "image",
+			"name": "sprite1_down_png"
+		},
+		{
+			"url": "game/sprite1_left.png",
+			"type": "image",
+			"name": "sprite1_left_png"
+		},
+		{
+			"url": "game/sprite1_right.png",
+			"type": "image",
+			"name": "sprite1_right_png"
+		},
+		{
+			"url": "game/sprite1_up.png",
+			"type": "image",
+			"name": "sprite1_up_png"
+		},
+		{
+			"url": "game/spritehp.png",
+			"type": "image",
+			"name": "spritehp_png"
+		},
+		{
+			"url": "game/spritehpbg.png",
+			"type": "image",
+			"name": "spritehpbg_png"
+		},
+		{
+			"url": "game/Button/button_down.png",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "game/Button/button_up.png",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "game/scene1/scene1bg.jpg",
+			"type": "image",
+			"name": "scene1bg_jpg"
+		},
+		{
+			"url": "game/scene2/scene2bg.jpg",
+			"type": "image",
+			"name": "scene2bg_jpg"
+		},
+		{
+			"url": "game/td/turretskin0.png",
+			"type": "image",
+			"name": "turretskin0_png"
+		},
+		{
+			"url": "game/td/turretskin1.png",
+			"type": "image",
+			"name": "turretskin1_png"
+		},
+		{
+			"url": "game/td/turretskin2.png",
+			"type": "image",
+			"name": "turretskin2_png"
+		},
+		{
+			"url": "game/td/turretskin3.png",
+			"type": "image",
+			"name": "turretskin3_png"
+		},
+		{
+			"url": "game/sprite1_down.json",
+			"type": "json",
+			"name": "sprite1_down_json"
+		},
+		{
+			"url": "game/turretskin.json",
+			"type": "json",
+			"name": "turretskin_json"
+		},
+		{
+			"url": "game/sprite1_up.json",
+			"type": "json",
+			"name": "sprite1_up_json"
+		},
+		{
+			"url": "game/scene2/scene2sprite.json",
+			"type": "json",
+			"name": "scene2sprite_json"
+		},
+		{
+			"url": "game/scene1/scene1sprite.json",
+			"type": "json",
+			"name": "scene1sprite_json"
+		},
+		{
+			"url": "game/sprite1_left.json",
+			"type": "json",
+			"name": "sprite1_left_json"
+		},
+		{
+			"url": "game/td/turretskin0.json",
+			"type": "json",
+			"name": "turretskin0_json"
+		},
+		{
+			"url": "game/td/turretskin1.json",
+			"type": "json",
+			"name": "turretskin1_json"
+		},
+		{
+			"url": "game/scene2/scene2turret.json",
+			"type": "json",
+			"name": "scene2turret_json"
+		},
+		{
+			"url": "game/sprite1_right.json",
+			"type": "json",
+			"name": "sprite1_right_json"
+		},
+		{
+			"url": "game/scene1/scene1turret.json",
+			"type": "json",
+			"name": "scene1turret_json"
+		},
+		{
+			"url": "game/td/turretskin3.json",
+			"type": "json",
+			"name": "turretskin3_json"
+		},
+		{
+			"url": "game/td/turretskin2.json",
+			"type": "json",
+			"name": "turretskin2_json"
+		}
+	]
+}
