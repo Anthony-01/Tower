@@ -1,3 +1,5 @@
+import XFKScene = game.XFKScene;
+
 class Main extends eui.UILayer {
 
 
@@ -31,8 +33,6 @@ class Main extends eui.UILayer {
     private async runGame() {
         await this.loadResource();
         this.createGameScene();
-
-
     }
 
     private async loadResource() {
@@ -63,16 +63,28 @@ class Main extends eui.UILayer {
     }
 
     private createGameScene() {
-        let bg = new eui.Image();
-        bg.source = RES.getRes("scene1bg_jpg");
-        this.addChild(bg);
-
-        let data = RES.getRes("scene1sprite_json");
-        data.sprite[0].path = data.Path;
-        let sp = new game.XFKSprite();
-        sp.parse(data.sprite[0]);
-        sp.load(this);
+        let buttonLevel1 = new eui.Button();
+        buttonLevel1.labelDisplay.text = "开始游戏";
+        buttonLevel1.x = 0;
+        buttonLevel1.y = 0;
+        buttonLevel1.name = "scene1";
+        buttonLevel1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startGame, this);
+        this.addChild(buttonLevel1);
     }
+
+    private scene: XFKScene;
+
+    private startGame(e: egret.TouchEvent) {
+        if(this.scene){
+            this.scene.release();
+        }
+        this.scene =new game.XFKScene();
+        this.scene.load(e.target.name);
+    }
+
+    /*
+    * M(model)V(view)C(controller)
+    * */
 
 
 }

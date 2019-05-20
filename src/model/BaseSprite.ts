@@ -17,10 +17,11 @@ namespace game {
      * 精灵的基础类别
      * */
     export class BaseSprite extends egret.Sprite implements IObject{
-        private id: number = Math.random(); //随机分配id
+        private id: number ; //随机分配id
 
         constructor() {
             super();
+            this.id = game.CommonFunction.Token;
         }
 
         get ID(): number {
@@ -41,6 +42,7 @@ namespace game {
 
         public setHp(value: number) {
             this.Hp = value;
+            //发送血量更改给控制器
             this.dispatchEvent(new egret.Event("gm_hpChange"));
         }
 
@@ -80,10 +82,16 @@ namespace game {
 
         }
 
+        /**
+         * 重写的load
+         * */
         public load(layer: egret.DisplayObjectContainer) {
 
         }
 
+        /**
+         * 重写的release
+         * */
         public release(): void {
 
         }

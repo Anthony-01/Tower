@@ -21,6 +21,7 @@ namespace game {
 
         /**
          * 监听血量变化，小于0的时候通知全局死亡
+         * model监听，发送控制器改变逻辑（view->controller）
          * */
         private onHpChange(e:egret.Event) {
             this.hpImg.setHp(this.Hp, this.MaxHp);
@@ -34,7 +35,7 @@ namespace game {
         private _sp: egret.MovieClip;
 
         private onDirectionChange(e: egret.Event) {
-            //创建一个movieClip
+            //创建一个movieClip,可否算作一个view？
             let data = RES.getRes(this.Type + "_" + this.Direction + "_json");
             let texture = RES.getRes(this.Type + "_" + this.Direction + "_png");
             let mcFactory = new egret.MovieClipDataFactory(data, texture);
@@ -93,7 +94,7 @@ namespace game {
             this.move(passTime);
         }
 
-        private move(time: number) {
+        private move(time: number) { //通知view状态更新？
             if (this.Path.length ==0) return;
 
             let point = this.Path[0];
@@ -120,7 +121,7 @@ namespace game {
             }
         }
 
-        public release() {
+        public release() { //释放整个model
             super.release();
             this.removeEventListener("gm_hpChange", this.onHpChange, this);
             this.removeEventListener("gm_directionChange", this.onDirectionChange, this);
