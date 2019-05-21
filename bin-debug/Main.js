@@ -43,10 +43,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var XFKScene = game.XFKScene;
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this._isStop = true;
+        return _this;
+        /*
+        * M(model)V(view)C(controller)
+        * */
     }
     Main.prototype.createChildren = function () {
         _super.prototype.createChildren.call(this);
@@ -75,6 +81,7 @@ var Main = (function (_super) {
                     case 0: return [4 /*yield*/, this.loadResource()];
                     case 1:
                         _a.sent();
+                        game.XFKLayer.getIns().load(this.stage);
                         this.createGameScene();
                         return [2 /*return*/];
                 }
@@ -125,14 +132,32 @@ var Main = (function (_super) {
         });
     };
     Main.prototype.createGameScene = function () {
-        var bg = new eui.Image();
-        bg.source = RES.getRes("scene1bg_jpg");
-        this.addChild(bg);
-        var data = RES.getRes("scene1sprite_json");
-        data.sprite[0].path = data.Path;
-        var sp = new game.XFKSprite();
-        sp.parse(data.sprite[0]);
-        sp.load(this);
+        // this._isStop = false;
+        this.startGame();
+        var buttonLevel1 = new eui.Button();
+        game.XFKLayer.getIns().EuiLayer.addChild(buttonLevel1);
+        buttonLevel1.labelDisplay.text = "开始";
+        buttonLevel1.x = 0;
+        buttonLevel1.y = 0;
+        buttonLevel1.name = "scene1";
+        buttonLevel1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButton, this);
+    };
+    Main.prototype.startGame = function () {
+        if (this.scene) {
+            this.scene.release();
+        }
+        this.scene = new game.XFKScene();
+        this.scene.load("scene1");
+    };
+    Main.prototype.onButton = function (e) {
+        if (this._isStop) {
+            e.target.labelDisplay.text = "开始";
+        }
+        else {
+            e.target.labelDisplay.text = "暂停";
+        }
+        this._isStop = !this._isStop;
+        game.ModuleManager.getInstance().IsStop = this._isStop;
     };
     return Main;
 }(eui.UILayer));

@@ -45,11 +45,12 @@ namespace game {
         }
 
         private closePanel() {
-
+            this.isOpen = false;
         }
 
         public setPoint(x: number, y: number) {
-
+            this.x = x;
+            this.y = y;
         }
     }
 }

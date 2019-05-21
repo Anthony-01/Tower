@@ -16,5 +16,9 @@ namespace game {
         public static addEventListener(type: string, func: Function, thisObj: Object) {
 
         }
+
+        public static removeEventListener(type, func, thisObj) {
+
+        }
     }
 }

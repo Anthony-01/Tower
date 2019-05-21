@@ -27,10 +27,11 @@ var game;
             //设置初始位置以及方向
             this.x = this.Path[0].x;
             this.y = this.Path[0].y;
-            this.setDirection(this.Path[0]);
+            this.setDirection(this.Path[1]);
         };
         /**
          * 监听血量变化，小于0的时候通知全局死亡
+         * model监听，发送控制器改变逻辑（view->controller）
          * */
         XFKSprite.prototype.onHpChange = function (e) {
             this.hpImg.setHp(this.Hp, this.MaxHp);
@@ -40,7 +41,7 @@ var game;
             }
         };
         XFKSprite.prototype.onDirectionChange = function (e) {
-            //创建一个movieClip
+            //创建一个movieClip,可否算作一个view？
             var data = RES.getRes(this.Type + "_" + this.Direction + "_json");
             var texture = RES.getRes(this.Type + "_" + this.Direction + "_png");
             var mcFactory = new egret.MovieClipDataFactory(data, texture);
@@ -91,9 +92,10 @@ var game;
             var point = this.Path[0];
             //计算x以及y方向上需要行进的距离?
             var targetSpeed;
+            targetSpeed = game.CommonFunction.GetSpeed(this.Point, point, this.MoveSpeed);
             var distanceX = targetSpeed.x * 10; //为什么要乘以10
             var distanceY = targetSpeed.y * 10;
-            if (Math.abs(point.x - this.x) < Math.abs(distanceX) && Math.abs(point.y - this.y) < Math.abs(distanceY)) {
+            if (Math.abs(point.x - this.x) <= Math.abs(distanceX) && Math.abs(point.y - this.y) <= Math.abs(distanceY)) {
                 this.x = point.x;
                 this.y = point.y;
                 this.Path.shift();

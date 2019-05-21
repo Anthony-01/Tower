@@ -15,6 +15,19 @@ var game;
         function XFKControl() {
             return _super !== null && _super.apply(this, arguments) || this;
         }
+        XFKControl.getIns = function () {
+            if (this._ins == null) {
+                this._ins = new XFKControl();
+            }
+            return this._ins;
+        };
+        XFKControl.dispatchEvent = function (type, data) {
+            this.getIns().dispatchEvent(new egret.Event(type, data));
+        };
+        XFKControl.addEventListener = function (type, func, thisObj) {
+        };
+        XFKControl.removeEventListener = function (type, func, thisObj) {
+        };
         return XFKControl;
     }(egret.EventDispatcher));
     game.XFKControl = XFKControl;

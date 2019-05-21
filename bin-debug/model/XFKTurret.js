@@ -1,17 +1,26 @@
-namespace game {
-    export class XFKTurret extends BaseSprite {
-        private offsetX: number;     //炮塔中心点相关
-        private offsetY: number;
-        private skin: string;        //炮塔皮肤
-        private radius: number;      //炮塔攻击范围
-        private cost: number;        //炮塔的金币花费
-
-        private sp: egret.MovieClip; //炮塔动画对象
-        private createSp(): void {   //炮台创建
-            let data = RES.getRes(this.skin + "_json");
-            let textrue = RES.getRes(this.skin + "_png");
-            let mcFactory = new egret.MovieClipDataFactory(data, textrue);
-
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var game;
+(function (game) {
+    var XFKTurret = (function (_super) {
+        __extends(XFKTurret, _super);
+        function XFKTurret() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.lastTime = 0;
+            return _this;
+        }
+        XFKTurret.prototype.createSp = function () {
+            var data = RES.getRes(this.skin + "_json");
+            var textrue = RES.getRes(this.skin + "_png");
+            var mcFactory = new egret.MovieClipDataFactory(data, textrue);
             if (this.sp != null) {
                 this.sp.parent.removeChild(this.sp);
                 this.sp.stop();
@@ -20,46 +29,40 @@ namespace game {
             this.sp.gotoAndPlay(1, -1);
             this.sp.x = -this.sp.width / 2 + this.offsetX;
             this.sp.y = -this.sp.height / 2 + this.offsetY;
-
             this.addChild(this.sp);
             this.sp.touchEnabled = true;
-        }
-
-        private radiusShape: egret.Shape;
-        load(parent: egret.DisplayObjectContainer) {
-            super.load(parent);
+        };
+        XFKTurret.prototype.load = function (parent) {
+            _super.prototype.load.call(this, parent);
             parent.addChild(this);
             this.createSp();
             if (this.radiusShape == null) {
                 this.radiusShape = new egret.Shape();
-                let graphics = this.radiusShape.graphics;
+                var graphics = this.radiusShape.graphics;
                 graphics.beginFill(0xffff60, 1);
                 graphics.drawCircle(0, 0, this.radius);
                 this.radiusShape.alpha = 0.2;
                 this.addChild(this.radiusShape);
             }
-            //model -> controller
+            //model->controller
             game.TDSelectPanel.getIns().showPanel(this.onChange, this);
             game.TDSelectPanel.getIns().setPoint(this.Point.x, this.Point.y + this.radiusShape.height);
-        }
-
-        private onChange(name: string) {
+        };
+        XFKTurret.prototype.onChange = function (name) {
             this.parseSkin(name);
             this.createSp();
             if (this.radiusShape != null) {
                 this.radiusShape.parent.removeChild(this.radiusShape);
                 this.radiusShape = null;
             }
-        }
-
-        public Parse(obj: any) {
+        };
+        XFKTurret.prototype.Parse = function (obj) {
             this.x = parseInt(obj.x);
             this.y = parseInt(obj.y);
             this.parseSkin(obj.type);
-        }
-
-        private parseSkin(name: string) {
-            let data = RES.getRes("turretskin_json");
+        };
+        XFKTurret.prototype.parseSkin = function (name) {
+            var data = RES.getRes("turretskin_json");
             this.skin = name;
             this.offsetX = parseInt(data[name].offsetx);
             this.offsetY = parseInt(data[name].offsety);
@@ -67,47 +70,45 @@ namespace game {
             this.name = data[name].name;
             this.cost = parseInt(data[name].glob);
             this.MoveSpeed = parseInt(data[name].speed);
-        }
-
-        public update(time: number) {
-            super.update(time);
+        };
+        XFKTurret.prototype.update = function (time) {
+            _super.prototype.update.call(this, time);
             if (this.MoveSpeed == 0) {
                 return;
             }
             this.searchTarget();
-        }
-
-        private searchTarget() {
-            let objectList = game.ModuleManager.getInstance().GetModuleList();
-            let tempSp: BaseSprite;
-            for (let key in objectList) {
-                if (objectList[key] instanceof XFKSprite) {
+        };
+        XFKTurret.prototype.searchTarget = function () {
+            var objectList = game.ModuleManager.getInstance().GetModuleList();
+            var tempSp;
+            for (var key in objectList) {
+                if (objectList[key] instanceof game.XFKSprite) {
                     tempSp = objectList[key];
                     if (game.CommonFunction.GetDistance(this.Point, tempSp.Point) <= this.radius) {
                         this.createBullet(this, tempSp);
                     }
                 }
             }
-        }
-
-        private lastTime: number = 0;
-
-        private createBullet(curret: BaseSprite, target: BaseSprite) {
-            let now = egret.getTimer();
+        };
+        XFKTurret.prototype.createBullet = function (curret, target) {
+            var now = egret.getTimer();
             if (now > this.lastTime) {
                 this.lastTime = now + this.MoveSpeed;
                 game.XFKControl.dispatchEvent(game.BaseEvent.gm_activation_bullet, [curret, target]);
                 this.changeOrientation(target.Point);
             }
-        }
-
-        private changeOrientation(point: egret.Point) {
-            let angle = Math.atan2(point.y - this.y, point.x - this.x);
+        };
+        XFKTurret.prototype.changeOrientation = function (point) {
+            var angle = Math.atan2(point.y - this.y, point.x - this.x);
             angle *= Math.PI;
             angle -= 180;
-            if (angle < 0) angle += 360;
-            let index = Math.round(this.sp.totalFrames * angle / 360);
+            if (angle < 0)
+                angle += 360;
+            var index = Math.round(this.sp.totalFrames * angle / 360);
             this.sp.gotoAndStop(index);
-        }
-    }
-}
+        };
+        return XFKTurret;
+    }(game.BaseSprite));
+    game.XFKTurret = XFKTurret;
+    __reflect(XFKTurret.prototype, "game.XFKTurret");
+})(game || (game = {}));

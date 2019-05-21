@@ -32,7 +32,6 @@ var game;
         __extends(BaseSprite, _super);
         function BaseSprite() {
             var _this = _super.call(this) || this;
-            _this.id = Math.random(); //随机分配id
             //精灵当前血量以及最大血量
             _this.Hp = 100;
             _this.MaxHp = 100;
@@ -44,6 +43,7 @@ var game;
             _this.Atc = 1;
             //行动方向
             _this.direction = "";
+            _this.id = game.CommonFunction.Token;
             return _this;
         }
         Object.defineProperty(BaseSprite.prototype, "ID", {
@@ -69,6 +69,7 @@ var game;
         });
         BaseSprite.prototype.setHp = function (value) {
             this.Hp = value;
+            //发送血量更改给控制器
             this.dispatchEvent(new egret.Event("gm_hpChange"));
         };
         /**
@@ -87,8 +88,14 @@ var game;
         //需要重写的方法
         BaseSprite.prototype.update = function (time) {
         };
+        /**
+         * 重写的load
+         * */
         BaseSprite.prototype.load = function (layer) {
         };
+        /**
+         * 重写的release
+         * */
         BaseSprite.prototype.release = function () {
         };
         return BaseSprite;

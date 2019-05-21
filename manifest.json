@@ -9,16 +9,23 @@
 		"libs/modules/game/game.js"
 	],
 	"game": [
-		"bin-debug/view/BaseSprite.js",
-		"bin-debug/event/BaseEvent.js",
+		"bin-debug/model/BaseSprite.js",
+		"bin-debug/view/XFKScene.js",
+		"bin-debug/model/Interface.js",
 		"bin-debug/Main.js",
-		"bin-debug/ThemeAdapter.js",
+		"bin-debug/control/TDSelectPanel.js",
 		"bin-debug/control/XFKControl.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/event/BaseEvent.js",
 		"bin-debug/manager/ModuleManager.js",
-		"bin-debug/AssetAdapter.js",
+		"bin-debug/manager/XFKLayer.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/ThemeAdapter.js",
+		"bin-debug/model/XFKBullet.js",
+		"bin-debug/model/XFKHpImg.js",
+		"bin-debug/model/XFKSprite.js",
+		"bin-debug/model/XFKTurret.js",
+		"bin-debug/utils/CommonFunction.js",
 		"bin-debug/view/Interface.js",
-		"bin-debug/view/XFKHpImg.js",
-		"bin-debug/view/XFKSprite.js"
+		"bin-debug/AssetAdapter.js"
 	]
 }

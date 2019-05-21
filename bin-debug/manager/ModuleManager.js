@@ -5,6 +5,9 @@ var game;
 (function (game) {
     var ModuleManager = (function () {
         function ModuleManager() {
+            this.moduleList = [];
+            this.IsStop = true;
+            game.XFKLayer.getIns().StageLayer.addEventListener(egret.Event.ENTER_FRAME, this.update, this);
         }
         ModuleManager.getInstance = function () {
             if (this._ins == null) {
@@ -16,11 +19,32 @@ var game;
         * 注册
         * */
         ModuleManager.prototype.registerModule = function (module) {
+            if (this.moduleList) {
+                this.moduleList.push(module);
+            }
         };
         /**
          * 注销
          * */
         ModuleManager.prototype.unRegisterModule = function (module) {
+            var index = this.moduleList.indexOf(module);
+            if (index = -1)
+                return;
+            this.moduleList.splice(index, 1);
+        };
+        /**
+         * 获取游戏模块列表
+         * */
+        ModuleManager.prototype.GetModuleList = function () {
+            return this.moduleList;
+        };
+        ModuleManager.prototype.update = function () {
+            if (this.IsStop) {
+                return;
+            }
+            for (var key in this.moduleList) {
+                this.moduleList[key].update(egret.getTimer());
+            }
         };
         return ModuleManager;
     }());

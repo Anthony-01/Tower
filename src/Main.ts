@@ -32,6 +32,7 @@ class Main extends eui.UILayer {
 
     private async runGame() {
         await this.loadResource();
+        game.XFKLayer.getIns().load(this.stage);
         this.createGameScene();
     }
 
@@ -62,24 +63,40 @@ class Main extends eui.UILayer {
         })
     }
 
+    private _isStop: boolean = true;
     private createGameScene() {
+        // this._isStop = false;
+
+        this.startGame();
         let buttonLevel1 = new eui.Button();
-        buttonLevel1.labelDisplay.text = "开始游戏";
+        game.XFKLayer.getIns().EuiLayer.addChild(buttonLevel1);
+        buttonLevel1.labelDisplay.text = "开始";
         buttonLevel1.x = 0;
         buttonLevel1.y = 0;
         buttonLevel1.name = "scene1";
-        buttonLevel1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startGame, this);
-        this.addChild(buttonLevel1);
+        buttonLevel1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButton, this);
+
     }
 
     private scene: XFKScene;
 
-    private startGame(e: egret.TouchEvent) {
+    private startGame() {
         if(this.scene){
             this.scene.release();
         }
         this.scene =new game.XFKScene();
-        this.scene.load(e.target.name);
+        this.scene.load("scene1");
+    }
+
+    private onButton(e: egret.TouchEvent) {
+        if(this._isStop){
+            e.target.labelDisplay.text="开始";
+        }
+        else{
+            e.target.labelDisplay.text="暂停";
+        }
+        this._isStop=!this._isStop;
+        game.ModuleManager.getInstance().IsStop=this._isStop;
     }
 
     /*

@@ -9,12 +9,16 @@ namespace game {
             return this._ins;
         }
 
+        constructor() {
+            game.XFKLayer.getIns().StageLayer.addEventListener(egret.Event.ENTER_FRAME, this.update, this);
+        }
 
-        private moduleList: egret.DisplayObjectContainer[] = [];
+
+        private moduleList: game.IObject[] = [];
         /*
         * 注册
         * */
-        registerModule(module: egret.DisplayObjectContainer) {
+        registerModule(module: game.IObject) {
             if (this.moduleList) {
                 this.moduleList.push(module);
             }
@@ -23,7 +27,7 @@ namespace game {
         /**
          * 注销
          * */
-        unRegisterModule(module: egret.DisplayObjectContainer) {
+        unRegisterModule(module: game.IObject) {
             let index = this.moduleList.indexOf(module);
             if (index = -1) return;
             this.moduleList.splice(index, 1);
@@ -34,6 +38,16 @@ namespace game {
          * */
         GetModuleList(): any[] {
             return this.moduleList;
+        }
+
+        public IsStop: boolean = true;
+        private update() {
+            if (this.IsStop) {
+                return
+            }
+            for (let key in this.moduleList) {
+                (<game.IObject>this.moduleList[key]).update(egret.getTimer())
+            }
         }
     }
 }

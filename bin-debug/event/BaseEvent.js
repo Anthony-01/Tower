@@ -12,11 +12,13 @@ var game;
 (function (game) {
     var BaseEvent = (function (_super) {
         __extends(BaseEvent, _super);
-        function BaseEvent() {
-            return _super !== null && _super.apply(this, arguments) || this;
+        function BaseEvent(name) {
+            return _super.call(this, name) || this;
         }
         BaseEvent.gm_monster_death = "death";
         BaseEvent.gm_moveEnd = "move_end";
+        BaseEvent.gm_activation_bullet = "activation_bullet";
+        BaseEvent.gm_headquaters_hpChange = "base_hp_change";
         return BaseEvent;
     }(egret.Event));
     game.BaseEvent = BaseEvent;
