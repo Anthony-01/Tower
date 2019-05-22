@@ -29,7 +29,10 @@ namespace game {
          * */
         unRegisterModule(module: game.IObject) {
             let index = this.moduleList.indexOf(module);
-            if (index = -1) return;
+            if (index == -1) {
+                console.warn("未找到需要注销的模块:", module);
+                return;
+            }
             this.moduleList.splice(index, 1);
         }
 

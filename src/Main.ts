@@ -90,10 +90,10 @@ class Main extends eui.UILayer {
 
     private onButton(e: egret.TouchEvent) {
         if(this._isStop){
-            e.target.labelDisplay.text="开始";
+            e.target.labelDisplay.text="暂停";
         }
         else{
-            e.target.labelDisplay.text="暂停";
+            e.target.labelDisplay.text="开始";
         }
         this._isStop=!this._isStop;
         game.ModuleManager.getInstance().IsStop=this._isStop;

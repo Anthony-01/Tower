@@ -22,11 +22,15 @@ var game;
             return this._ins;
         };
         XFKControl.dispatchEvent = function (type, data) {
-            this.getIns().dispatchEvent(new egret.Event(type, data));
+            var event = new game.BaseEvent(type, data);
+            event.object = data;
+            this.getIns().dispatchEvent(event);
         };
         XFKControl.addEventListener = function (type, func, thisObj) {
+            this.getIns().addEventListener(type, func, thisObj);
         };
         XFKControl.removeEventListener = function (type, func, thisObj) {
+            this.getIns().removeEventListener(type, func, thisObj);
         };
         return XFKControl;
     }(egret.EventDispatcher));

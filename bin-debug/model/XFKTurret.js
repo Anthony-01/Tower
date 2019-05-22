@@ -36,6 +36,22 @@ var game;
             _super.prototype.load.call(this, parent);
             parent.addChild(this);
             this.createSp();
+            this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTab, this);
+            game.ModuleManager.getInstance().registerModule(this);
+            //model -> controller
+        };
+        XFKTurret.prototype.release = function () {
+            _super.prototype.release.call(this);
+            if (this.sp != null) {
+                this.sp.stop();
+            }
+            if (this.parent != null) {
+                this.parent.removeChild(this);
+            }
+            this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTab, this);
+            game.ModuleManager.getInstance().unRegisterModule(this);
+        };
+        XFKTurret.prototype.onTouchTab = function (e) {
             if (this.radiusShape == null) {
                 this.radiusShape = new egret.Shape();
                 var graphics = this.radiusShape.graphics;
@@ -44,7 +60,6 @@ var game;
                 this.radiusShape.alpha = 0.2;
                 this.addChild(this.radiusShape);
             }
-            //model->controller
             game.TDSelectPanel.getIns().showPanel(this.onChange, this);
             game.TDSelectPanel.getIns().setPoint(this.Point.x, this.Point.y + this.radiusShape.height);
         };

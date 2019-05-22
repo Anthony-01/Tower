@@ -20,8 +20,8 @@ namespace game {
                 back.y = 0;
                 return back;
             }
-            back.x = speed * Math.abs(target.x - current.x) / dis;
-            back.y = speed * Math.abs(target.y - current.y) / dis;
+            back.x = speed * (target.x - current.x) / dis;
+            back.y = speed * (target.y - current.y) / dis;
             return back;
         }
 
@@ -35,7 +35,12 @@ namespace game {
 
             let shape = new egret.Shape();
             let graphics = shape.graphics;
-            
+            graphics.lineStyle(2, 0x2c1245);
+            graphics.moveTo(point.x, point.y);
+            graphics.lineTo(point.x + r, point.y);
+            graphics.drawArc(point.x, point.y, r, 0, (Math.PI / 180) * 240, true);
+            graphics.lineTo(point.x, point.y);
+            graphics.endFill();
 
             return back;
         }

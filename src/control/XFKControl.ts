@@ -9,16 +9,21 @@ namespace game {
             return this._ins;
         }
 
+
         public static dispatchEvent(type: string, data: any) {
-            this.getIns().dispatchEvent(new egret.Event(type, data));
+            let event = new BaseEvent(type, data);
+            event.object = data;
+            this.getIns().dispatchEvent(event);
         }
 
-        public static addEventListener(type: string, func: Function, thisObj: Object) {
 
+
+        public static addEventListener(type: string, func: Function, thisObj: Object) {
+            this.getIns().addEventListener(type, func, thisObj);
         }
 
         public static removeEventListener(type, func, thisObj) {
-
+            this.getIns().removeEventListener(type, func, thisObj);
         }
     }
 }

@@ -30,6 +30,25 @@ namespace game {
             super.load(parent);
             parent.addChild(this);
             this.createSp();
+            this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTab, this);
+            game.ModuleManager.getInstance().registerModule(this);
+            //model -> controller
+
+        }
+
+        release() {
+            super.release();
+            if(this.sp!=null){
+                this.sp.stop();
+            }
+            if(this.parent!=null){
+                this.parent.removeChild(this);
+            }
+            this.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTab,this);
+            game.ModuleManager.getInstance().unRegisterModule(this);
+        }
+
+        private onTouchTab(e: egret.TouchEvent) {
             if (this.radiusShape == null) {
                 this.radiusShape = new egret.Shape();
                 let graphics = this.radiusShape.graphics;
@@ -38,7 +57,6 @@ namespace game {
                 this.radiusShape.alpha = 0.2;
                 this.addChild(this.radiusShape);
             }
-            //model -> controller
             game.TDSelectPanel.getIns().showPanel(this.onChange, this);
             game.TDSelectPanel.getIns().setPoint(this.Point.x, this.Point.y + this.radiusShape.height);
         }

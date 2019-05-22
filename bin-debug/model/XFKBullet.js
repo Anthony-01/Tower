@@ -16,8 +16,8 @@ var game;
             return _super !== null && _super.apply(this, arguments) || this;
         }
         XFKBullet.prototype.setTarget = function (source, target) {
-            this.x = source.x;
-            this.y = source.y;
+            this.x = source.Point.x;
+            this.y = source.Point.y;
             this.target = target;
             var bitmap = new egret.Bitmap(RES.getRes("bullet1_png"));
             bitmap.x = -bitmap.width / 2;
@@ -25,6 +25,17 @@ var game;
             this.addChild(bitmap);
             this.MoveSpeed = 1;
             this.radius = 10;
+        };
+        XFKBullet.prototype.load = function (parent) {
+            parent.addChild(this);
+            game.ModuleManager.getInstance().registerModule(this);
+        };
+        XFKBullet.prototype.release = function () {
+            _super.prototype.release.call(this);
+            if (this.parent) {
+                this.parent.removeChild(this);
+            }
+            game.ModuleManager.getInstance().unRegisterModule(this);
         };
         XFKBullet.prototype.update = function (time) {
             _super.prototype.update.call(this, time);

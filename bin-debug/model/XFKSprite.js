@@ -92,7 +92,7 @@ var game;
             var point = this.Path[0];
             //计算x以及y方向上需要行进的距离?
             var targetSpeed;
-            targetSpeed = game.CommonFunction.GetSpeed(this.Point, point, this.MoveSpeed);
+            targetSpeed = game.CommonFunction.GetSpeed(point, this.Point, this.MoveSpeed);
             var distanceX = targetSpeed.x * 10; //为什么要乘以10
             var distanceY = targetSpeed.y * 10;
             if (Math.abs(point.x - this.x) <= Math.abs(distanceX) && Math.abs(point.y - this.y) <= Math.abs(distanceY)) {

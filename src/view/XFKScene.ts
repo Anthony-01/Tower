@@ -119,8 +119,10 @@ namespace game {
 
         }
 
-        private createBullet() {
-
+        private createBullet(e: BaseEvent) {
+            let bullet:game.XFKBullet=new XFKBullet();
+            bullet.setTarget(e.object[0], e.object[1]);
+            bullet.load(game.XFKLayer.getIns().NpcLayer);
         }
 
         private spriteDeath() {

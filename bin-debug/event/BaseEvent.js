@@ -12,8 +12,8 @@ var game;
 (function (game) {
     var BaseEvent = (function (_super) {
         __extends(BaseEvent, _super);
-        function BaseEvent(name) {
-            return _super.call(this, name) || this;
+        function BaseEvent(name, bubbles, cancelable) {
+            return _super.call(this, name, bubbles, cancelable) || this;
         }
         BaseEvent.gm_monster_death = "death";
         BaseEvent.gm_moveEnd = "move_end";

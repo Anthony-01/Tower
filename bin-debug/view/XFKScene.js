@@ -104,7 +104,10 @@ var game;
         };
         XFKScene.prototype.baseHpChange = function (e) {
         };
-        XFKScene.prototype.createBullet = function () {
+        XFKScene.prototype.createBullet = function (e) {
+            var bullet = new game.XFKBullet();
+            bullet.setTarget(e.object[0], e.object[1]);
+            bullet.load(game.XFKLayer.getIns().NpcLayer);
         };
         XFKScene.prototype.spriteDeath = function () {
         };

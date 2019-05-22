@@ -2,7 +2,7 @@ namespace game {
     /**
      * 负责显示四种炮塔
      * */
-    export class TDSelectPanel extends egret.DisplayObjectContainer{
+    export class TDSelectPanel extends BasePanel{
         private static _ins: TDSelectPanel;
 
         public static getIns(): TDSelectPanel {
@@ -12,12 +12,13 @@ namespace game {
             return this._ins;
         }
 
-        private isOpen: boolean = false;        //当前是否点开
+
         private callFun: Function;              //调用方法
         private callObj: Object;                //调用对象
 
         public showPanel(callFunc: Function, thisObj: Object) {
             if (this.isOpen) return;
+            this.show(0);
             this.callFun = callFunc;
             this.callObj = thisObj;
             let data = RES.getRes( "turretskin_json");
@@ -44,13 +45,5 @@ namespace game {
             this.closePanel();
         }
 
-        private closePanel() {
-            this.isOpen = false;
-        }
-
-        public setPoint(x: number, y: number) {
-            this.x = x;
-            this.y = y;
-        }
     }
 }

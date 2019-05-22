@@ -4,8 +4,8 @@ namespace game {
         private target: BaseSprite;     //攻击目标
 
         setTarget(source: BaseSprite, target: BaseSprite) {
-            this.x = source.x;
-            this.y = source.y;
+            this.x = source.Point.x;
+            this.y = source.Point.y;
 
             this.target = target;
 
@@ -17,6 +17,19 @@ namespace game {
 
             this.MoveSpeed = 1;
             this.radius = 10;
+        }
+
+        load(parent: egret.DisplayObjectContainer) {
+            parent.addChild(this);
+            game.ModuleManager.getInstance().registerModule(this);
+        }
+
+        release() {
+            super.release();
+            if (this.parent) {
+                this.parent.removeChild(this);
+            }
+            game.ModuleManager.getInstance().unRegisterModule(this);
         }
 
         update(time: number) {

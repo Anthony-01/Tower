@@ -151,10 +151,10 @@ var Main = (function (_super) {
     };
     Main.prototype.onButton = function (e) {
         if (this._isStop) {
-            e.target.labelDisplay.text = "开始";
+            e.target.labelDisplay.text = "暂停";
         }
         else {
-            e.target.labelDisplay.text = "暂停";
+            e.target.labelDisplay.text = "开始";
         }
         this._isStop = !this._isStop;
         game.ModuleManager.getInstance().IsStop = this._isStop;

@@ -16,9 +16,7 @@ var game;
     var TDSelectPanel = (function (_super) {
         __extends(TDSelectPanel, _super);
         function TDSelectPanel() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.isOpen = false; //当前是否点开
-            return _this;
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         TDSelectPanel.getIns = function () {
             if (this._ins == null) {
@@ -29,6 +27,7 @@ var game;
         TDSelectPanel.prototype.showPanel = function (callFunc, thisObj) {
             if (this.isOpen)
                 return;
+            this.show(0);
             this.callFun = callFunc;
             this.callObj = thisObj;
             var data = RES.getRes("turretskin_json");
@@ -51,12 +50,8 @@ var game;
             }
             this.closePanel();
         };
-        TDSelectPanel.prototype.closePanel = function () {
-        };
-        TDSelectPanel.prototype.setPoint = function (x, y) {
-        };
         return TDSelectPanel;
-    }(egret.DisplayObjectContainer));
+    }(game.BasePanel));
     game.TDSelectPanel = TDSelectPanel;
     __reflect(TDSelectPanel.prototype, "game.TDSelectPanel");
 })(game || (game = {}));

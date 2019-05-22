@@ -28,8 +28,10 @@ var game;
          * */
         ModuleManager.prototype.unRegisterModule = function (module) {
             var index = this.moduleList.indexOf(module);
-            if (index = -1)
+            if (index == -1) {
+                console.warn("未找到需要注销的模块:", module);
                 return;
+            }
             this.moduleList.splice(index, 1);
         };
         /**

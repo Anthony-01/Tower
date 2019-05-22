@@ -5,8 +5,10 @@ namespace game {
         public static gm_activation_bullet = "activation_bullet";
         public static gm_headquaters_hpChange = "base_hp_change";
 
-        constructor(name: string) {
-            super(name);
+        public object:any;
+
+        constructor(name: string, bubbles?:boolean,cancelable?:boolean) {
+            super(name, bubbles, cancelable);
         }
     }
 }
